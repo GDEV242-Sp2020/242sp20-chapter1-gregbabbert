@@ -1,20 +1,21 @@
 /**
- * This class represents a simple picture. You can draw the picture using
- * the draw method. But wait, there's more: being an electronic picture, it
- * can be changed. You can set it to black-and-white display and back to
- * colors (only after it's been drawn, of course).
- *
- * This class was written as an early example for teaching Java with BlueJ.
+ * This is a picture I made of an alien/robot next to a person.
  * 
- * @author  Michael Kšlling and David J. Barnes
- * @version 2016.02.29
+ * @author  Greg Babbert
+ * @version 2020.02.02
  */
 public class Picture
 {
-    private Square wall;
-    private Square window;
-    private Triangle roof;
+    private Square body;
+    private Square eyeOne;
+    private Square pupilOne;
+    private Square eyeTwo;
+    private Square pupilTwo;
+    private Triangle head;
+    private Circle earOne;
+    private Circle earTwo;
     private Circle sun;
+    private Person person;
     private boolean drawn;
 
     /**
@@ -22,10 +23,16 @@ public class Picture
      */
     public Picture()
     {
-        wall = new Square();
-        window = new Square();
-        roof = new Triangle();  
+        body = new Square();
+        eyeOne = new Square();
+        pupilOne = new Square();
+        eyeTwo = new Square();
+        pupilTwo = new Square();
+        head = new Triangle();  
         sun = new Circle();
+        earOne = new Circle();
+        earTwo = new Circle();
+        person = new Person();
         drawn = false;
     }
 
@@ -35,30 +42,77 @@ public class Picture
     public void draw()
     {
         if(!drawn) {
-            wall.moveHorizontal(-140);
-            wall.moveVertical(20);
-            wall.changeSize(120);
-            wall.changeColor("blue");
-            wall.makeVisible();
+            body.moveHorizontal(-190);
+            body.moveVertical(20);
+            body.changeSize(100);
+            body.changeColor("navy");
+            body.makeVisible();
             
-            window.changeColor("black");
-            window.moveHorizontal(-120);
-            window.moveVertical(40);
-            window.changeSize(40);
-            window.makeVisible();
+            eyeOne.moveHorizontal(-180);
+            eyeOne.moveVertical(40);
+            eyeOne.changeSize(30);
+            eyeOne.changeColor("white");
+            eyeOne.makeVisible();
+            
+            pupilOne.moveHorizontal(-180);
+            pupilOne.moveVertical(47);
+            pupilOne.changeSize(15);
+            pupilOne.changeColor("black");
+            pupilOne.makeVisible();
+            
+            eyeTwo.moveHorizontal(-130);
+            eyeTwo.moveVertical(40);
+            eyeTwo.changeSize(30);
+            eyeTwo.changeColor("white");
+            eyeTwo.makeVisible();
+            
+            pupilTwo.moveHorizontal(-130);
+            pupilTwo.moveVertical(47);
+            pupilTwo.changeSize(15);
+            pupilTwo.changeColor("black");
+            pupilTwo.makeVisible();
     
-            roof.changeSize(60, 180);
-            roof.moveHorizontal(20);
-            roof.moveVertical(-60);
-            roof.makeVisible();
+            head.changeSize(60, 100);
+            head.moveHorizontal(-40);
+            head.moveVertical(-60);
+            head.makeVisible();
     
             sun.changeColor("yellow");
-            sun.moveHorizontal(100);
-            sun.moveVertical(-40);
-            sun.changeSize(80);
+            sun.changeSize(60);
+            sun.moveVertical(-15);
+            sun.moveHorizontal(40);
             sun.makeVisible();
+            
+            earOne.changeColor("red");
+            earOne.changeSize(80);
+            earOne.moveHorizontal(-180);
+            earOne.moveVertical(15);
+            earOne.makeVisible();
+            
+            earTwo.changeColor("blue");
+            earTwo.changeSize(80);
+            earTwo.moveHorizontal(-300);
+            earTwo.moveVertical(15);
+            earTwo.makeVisible();
+            
+            person.changeColor("black");
+            person.moveHorizontal(400);
+            person.moveVertical(180);
+            person.changeSize(80, 40);
+            person.makeVisible();
             drawn = true;
         }
+        
+        
+    }
+    
+    public void look() {
+      pupilOne.slowMoveHorizontal(15);
+      pupilTwo.slowMoveHorizontal(15);
+      pupilOne.slowMoveVertical(2);
+      pupilTwo.slowMoveVertical(2);
+      pupilOne.changeColor("red");
+      pupilTwo.changeColor("red");
     }
 
     /**
@@ -66,10 +120,16 @@ public class Picture
      */
     public void setBlackAndWhite()
     {
-        wall.changeColor("black");
-        window.changeColor("white");
-        roof.changeColor("black");
+        body.changeColor("black");
+        eyeOne.changeColor("white");
+        eyeTwo.changeColor("white");
+        head.changeColor("white");
+        earOne.changeColor("black");
+        earTwo.changeColor("black");
+        pupilOne.changeColor("black");
+        pupilTwo.changeColor("black");
         sun.changeColor("black");
+        person.changeColor("black");
     }
 
     /**
@@ -77,9 +137,15 @@ public class Picture
      */
     public void setColor()
     {
-        wall.changeColor("red");
-        window.changeColor("black");
-        roof.changeColor("green");
+        body.changeColor("navy");
+        eyeOne.changeColor("white");
+        eyeTwo.changeColor("white");
+        earOne.changeColor("red");
+        pupilOne.changeColor("black");
+        pupilTwo.changeColor("black");
+        earTwo.changeColor("blue");
+        head.changeColor("green");
         sun.changeColor("yellow");
+        person.changeColor("black");
     }
 }
